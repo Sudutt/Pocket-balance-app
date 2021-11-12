@@ -1,0 +1,33 @@
+<!-- Search Bar -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/index.css">
+    </head>
+    <body>
+        <p></p>
+        <div align="center">
+            <a href="https://www.pokt.network">
+                <img src="https://assets.website-files.com/609e7a6f2ec5c05d866ed6d3/60a7cd2bbdce89ccfbf8ff97_POKT_Logo_S_Color.png" alt="Pocket Network logo" width="340"/>
+            </a>
+        </div><br>
+        <h1><center>Get Balance</center></h1>
+        <form class="example" method="post" action="" style="margin:auto;max-width:600px">
+            <input type="text" placeholder="Enter full address (starting with 0x)" name="address">
+            <button type="submit"><i class="fa fa-search"></i>
+            </button>
+        </form>
+        <p></p>
+        <center>
+            {%if balance==null %}
+                <br><br>
+            {% else %}
+                Address : {{ address }}<br></br>
+                Balance : {{ balance }}<br></br>
+            {% endif %}
+            Gas price : {{ gas }}
+        </center>
+    </body>
+</html>
