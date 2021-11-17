@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+import re
 
 app = Flask(__name__)
 
@@ -45,7 +46,12 @@ def main():
     if request.method == "POST":
         add = request.form['address']
         kwargs['address'] = add
-        kwargs['balance'] = weiToEth(use("getBalance", [add, "latest"]))
+        addRegex = re.compile(r"0x[0-9a-fA-F]{40}")
+        validAdd = addRegex.search(add)
+        if(validAdd):
+            kwargs['balance'] = weiToEth(use("getBalance", [add, "latest"]))
+        else:
+            kwargs['balance'] = -1
     return render_template("index.html", **kwargs)
 
 if __name__=="__main__":

@@ -21,11 +21,15 @@
         </form>
         <p></p>
         <center>
-            {%if balance==null %}
+            {% if address==null %}
                 <br><br>
             {% else %}
-                Address : {{ address }}<br></br>
-                Balance : {{ balance }}<br></br>
+                {% if balance==-1 %}
+                    Invalid Address! Address must begin with "0x" followed by 40-character hexadecimal string<br></br>
+                {% else %}
+                    Address : {{ address }}<br></br>
+                    Balance : {{ balance }}<br></br>
+                {% endif %}
             {% endif %}
             Gas price : {{ gas }}
         </center>
